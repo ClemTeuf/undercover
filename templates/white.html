@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mr. White - Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card white-card">
+        <div class="big-icon">👻</div>
+
+        <h1>{{ joueur.nom }}</h1>
+
+        <p class="eliminated">était Mr. White !</p>
+
+        <p class="instruction">Dernière chance :</p>
+
+        <p class="instruction">
+          devinez le mot des Civils pour gagner immédiatement.
+        </p>
+
+        <form action="{{ url_for('verifier_white') }}" method="POST">
+          <input
+            class="guess-input"
+            type="text"
+            name="proposition"
+            placeholder="Votre proposition..."
+            autocomplete="off"
+            required
+          />
+
+          <button type="submit" class="button">Deviner le mot</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="container home-shell">
+      <section class="home-intro" aria-label="Undercover">
+        <p class="eyebrow">Le jeu des identités cachées</p>
+        <h1 class="logo"><span>Under</span><span>cover</span></h1>
+        <div class="home-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="home-note">
+          Une table. Des mots presque semblables.<br />Quelqu’un ne sait pas ce
+          que vous savez.
+        </p>
+        <div class="edition-line">
+          <span>Dossier 001</span><span>La partie commence ici</span>
+        </div>
+      </section>
+
+      <section class="card home-panel">
+        <div class="panel-heading">
+          <p class="eyebrow">Nouvelle partie</p>
+          <h2>Préparer la table</h2>
+        </div>
+
+        {% if erreur %}
+        <div class="error">{{ erreur }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('configuration') }}" method="POST">
+          <div class="input-group">
+            <label for="nb_joueurs"> Nombre total de joueurs </label>
+
+            <input
+              id="nb_joueurs"
+              name="nb_joueurs"
+              type="number"
+              min="3"
+              value="4"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="nb_undercover"> Nombre d'Undercovers </label>
+
+            <input
+              id="nb_undercover"
+              name="nb_undercover"
+              type="number"
+              min="0"
+              value="1"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="nb_white"> Nombre de Mr. White </label>
+
+            <input
+              id="nb_white"
+              name="nb_white"
+              type="number"
+              min="0"
+              value="0"
+              required
+            />
+          </div>
+
+          <button type="submit" class="button">
+            Saisir les prénoms <span aria-hidden="true">↗</span>
+          </button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

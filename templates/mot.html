@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mot secret - Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card secret-card">
+        <div class="big-icon">👁️</div>
+
+        <h1>{{ joueur.nom }}</h1>
+
+        <p class="instruction">Ton mot secret :</p>
+
+        <div class="secret-word">{{ joueur.mot }}</div>
+
+        <a href="{{ url_for('jeu') }}" class="button secondary">
+          Retour au vote
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

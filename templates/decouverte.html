@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mot secret - Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card secret-card">
+        <p class="step">Joueur {{ index + 1 }} / {{ total }}</p>
+
+        <h1>{{ joueur.nom }}</h1>
+
+        <p class="instruction">Passe le téléphone à ce joueur.</p>
+
+        <p class="instruction">Appuie sur le bouton pour découvrir ton mot.</p>
+
+        <div id="secret" class="secret-word hidden">{{ joueur.mot }}</div>
+
+        <button class="button" onclick="revelerMot()" id="revealButton">
+          👁️ Révéler mon mot
+        </button>
+
+        <form
+          action="{{ url_for('decouverte_suivant') }}"
+          method="POST"
+          id="nextForm"
+          class="hidden"
+        >
+          <button type="submit" class="button secondary">
+            Cacher et passer au suivant
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function revelerMot() {
+        const secret = document.getElementById("secret");
+        const button = document.getElementById("revealButton");
+        const nextForm = document.getElementById("nextForm");
+
+        secret.classList.remove("hidden");
+        nextForm.classList.remove("hidden");
+
+        button.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

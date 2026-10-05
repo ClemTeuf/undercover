@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Joueurs - Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="logo">UNDERCOVER</div>
+
+      <div class="card">
+        <h1>Les joueurs</h1>
+
+        <p class="subtitle">Entrez les prénoms des joueurs</p>
+
+        <form action="{{ url_for('lancer') }}" method="POST">
+          <div class="players-form">
+            {% for i in range(nombre) %}
+
+            <div class="input-group">
+              <label for="joueur_{{ i }}"> Joueur {{ i + 1 }} </label>
+
+              <input
+                id="joueur_{{ i }}"
+                name="joueur_{{ i }}"
+                type="text"
+                placeholder="Prénom"
+              />
+            </div>
+
+            {% endfor %}
+          </div>
+
+          <button type="submit" class="button">Lancer la partie</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

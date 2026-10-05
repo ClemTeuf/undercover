@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Vote - Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="vote-icon">🗳️</div>
+
+        <h1>Phase de vote</h1>
+
+        <p class="instruction">
+          Prenez la parole dans l'ordre indiqué, puis choisissez le joueur
+          éliminé.
+        </p>
+
+        <div class="vote-list">
+          {% for index, joueur in joueurs %}
+
+          <div class="vote-row">
+            <form action="{{ url_for('eliminer', index=index) }}" method="POST">
+              <button type="submit" class="vote-button">
+                <span class="vote-player">
+                  <span class="vote-order">{{ loop.index }}</span>
+                  <span>{{ joueur.nom }}</span>
+                </span>
+                <span>Éliminer</span>
+              </button>
+            </form>
+
+            <a
+              class="word-button"
+              href="{{ url_for('voir_mot', index=index) }}"
+              aria-label="Revoir le mot de {{ joueur.nom }}"
+              title="Revoir le mot de {{ joueur.nom }}"
+            >
+              👁️
+            </a>
+          </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

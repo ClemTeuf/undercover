@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Fin - Undercover</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="big-icon">🏆</div>
+
+        <h1 class="victory">{{ message }}</h1>
+
+        <div class="recap">
+          <p>
+            <strong>Mot Civil :</strong>
+            {{ mot_civil }}
+          </p>
+
+          <p>
+            <strong>Mot Undercover :</strong>
+            {{ mot_undercover }}
+          </p>
+
+          <h2 class="recap-title">Récapitulatif des joueurs</h2>
+          <ul class="recap-joueurs">
+            {% for joueur in joueurs %}
+            <li>
+              <strong>{{ joueur.nom }}</strong>
+              <span>{{ joueur.role }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <a href="{{ url_for('rejouer') }}" class="button">
+          🔄 Rejouer avec les mêmes joueurs
+        </a>
+
+        <a href="{{ url_for('nouvelle_partie') }}" class="button secondary">
+          👥 Nouvelle partie
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

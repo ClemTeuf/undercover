@@ -1,0 +1,924 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #202938 0%,
+            #111827 45%,
+            #080b11 100%
+        );
+
+    color: #ffffff;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.logo {
+    text-align: center;
+
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 4px;
+
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+
+    color: #9ca3af;
+
+    margin-bottom: 25px;
+}
+
+.card {
+    background: rgba(31, 41, 55, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 24px;
+
+    padding: 30px 24px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(10px);
+}
+
+.card h1 {
+    text-align: center;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #d1d5db;
+
+    margin-bottom: 7px;
+}
+
+.input-group input,
+.guess-input {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #374151;
+    border-radius: 12px;
+
+    background: #111827;
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.input-group input:focus,
+.guess-input:focus {
+    border-color: #3b82f6;
+}
+
+.button {
+    display: block;
+
+    width: 100%;
+
+    border: none;
+    border-radius: 13px;
+
+    padding: 15px 20px;
+
+    margin-top: 14px;
+
+    background: #2563eb;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+.button:hover {
+    background: #1d4ed8;
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+.button.secondary {
+    background: #374151;
+}
+
+.button.secondary:hover {
+    background: #4b5563;
+}
+
+.error {
+    background: rgba(220, 38, 38, 0.15);
+
+    border: 1px solid #dc2626;
+
+    color: #fca5a5;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+}
+
+.step {
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+.instruction {
+    text-align: center;
+
+    color: #d1d5db;
+
+    line-height: 1.5;
+
+    margin: 8px 0;
+}
+
+.secret-card {
+    text-align: center;
+}
+
+.secret-word {
+    margin: 35px 0;
+
+    padding: 30px 15px;
+
+    border-radius: 18px;
+
+    background: #111827;
+
+    border: 2px solid #374151;
+
+    color: #facc15;
+
+    font-size: 34px;
+
+    font-weight: 900;
+
+    word-break: break-word;
+}
+
+.hidden {
+    display: none;
+}
+
+.vote-icon,
+.big-icon {
+    text-align: center;
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+.vote-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.vote-row {
+    display: flex;
+    gap: 8px;
+}
+
+.vote-row form {
+    flex: 1;
+    min-width: 0;
+}
+
+.word-button {
+    display: grid;
+    flex: 0 0 56px;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: #374151;
+    color: white;
+
+    font-size: 21px;
+    text-decoration: none;
+}
+
+.word-button:hover {
+    background: #4b5563;
+}
+
+.vote-button {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: #b91c1c;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.vote-button:hover {
+    background: #991b1b;
+}
+
+.vote-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vote-order {
+    display: grid;
+    flex: 0 0 28px;
+    aspect-ratio: 1;
+    place-items: center;
+
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.16);
+
+    font-size: 14px;
+}
+
+.elimination-card {
+    text-align: center;
+}
+
+.eliminated {
+    text-align: center;
+
+    font-size: 20px;
+
+    color: #d1d5db;
+
+    margin-bottom: 25px;
+}
+
+.role-box {
+    background: #111827;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    text-align: center;
+}
+
+.role-box span {
+    color: #9ca3af;
+}
+
+.role-box strong {
+    font-size: 24px;
+
+    color: #f59e0b;
+}
+
+.white-card {
+    text-align: center;
+}
+
+.guess-input {
+    margin-top: 20px;
+}
+
+.victory {
+    color: #4ade80;
+
+    font-size: 23px !important;
+
+    line-height: 1.35;
+}
+
+.recap {
+    background: #111827;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin: 25px 0;
+
+    text-align: center;
+
+    line-height: 1.8;
+
+    color: #d1d5db;
+}
+
+.recap strong {
+    color: white;
+}
+
+.recap-title {
+    margin-top: 18px;
+    color: white;
+    font-size: 18px;
+}
+
+.recap-joueurs {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+    list-style: none;
+    text-align: left;
+}
+
+.recap-joueurs li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #1f2937;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.recap-joueurs li span {
+    color: #d1d5db;
+}
+
+/* Direction visuelle Undercover */
+:root {
+    color-scheme: dark;
+    --ink: #171b18;
+    --ink-soft: #242a25;
+    --paper: #e9e2d5;
+    --paper-light: #f4f0e8;
+    --muted: #a9aaa0;
+    --copper: #b69a6b;
+    --rust: #87483b;
+    --line: rgba(233, 226, 213, 0.16);
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    padding: 32px 22px;
+    background:
+        radial-gradient(ellipse at 8% 8%, rgba(126, 91, 53, 0.13), transparent 34%),
+        radial-gradient(ellipse at 92% 88%, rgba(79, 99, 75, 0.11), transparent 36%),
+        #121512;
+    color: var(--paper);
+    font-family: "Manrope", "Trebuchet MS", sans-serif;
+}
+
+body::before {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(0deg, transparent 0 5px, rgba(236, 230, 216, 0.018) 5px 6px),
+        repeating-linear-gradient(90deg, transparent 0 5px, rgba(236, 230, 216, 0.012) 5px 6px);
+    content: "";
+    pointer-events: none;
+}
+
+.container {
+    max-width: 540px;
+}
+
+.home-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(390px, 0.94fr);
+    align-items: center;
+    gap: 76px;
+    max-width: 1060px;
+}
+
+.home-intro {
+    display: flex;
+    min-height: 430px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    animation: arrive 650ms ease-out both;
+}
+
+.eyebrow {
+    color: var(--copper);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.logo {
+    display: block;
+    margin: 24px 0 25px;
+    color: var(--paper);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 86px;
+    font-weight: 500;
+    line-height: 0.76;
+    text-align: left;
+    letter-spacing: 0;
+}
+
+.logo span {
+    display: block;
+}
+
+.logo span + span {
+    color: var(--copper);
+    font-style: italic;
+}
+
+.home-mark {
+    display: flex;
+    width: 94px;
+    height: 14px;
+    align-items: center;
+    gap: 6px;
+    margin: 9px 0 22px;
+}
+
+.home-mark span {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--copper);
+    transform: rotate(45deg);
+}
+
+.home-mark span:nth-child(2) {
+    width: 45px;
+    height: 1px;
+    border: 0;
+    background: var(--copper);
+    transform: none;
+}
+
+.home-note {
+    color: #cbc7bb;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.edition-line {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 54px;
+    padding-top: 13px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.card {
+    padding: 34px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 4px;
+    background: var(--paper);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3);
+    color: var(--ink);
+    backdrop-filter: none;
+    animation: arrive 650ms 100ms ease-out both;
+}
+
+.home-panel {
+    width: 100%;
+    padding: 38px 36px 34px;
+}
+
+.panel-heading {
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(23, 27, 24, 0.16);
+}
+
+.panel-heading .eyebrow {
+    color: #795c36;
+}
+
+.panel-heading h2,
+.card h1 {
+    margin-top: 5px;
+    color: var(--ink);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.05;
+    text-align: left;
+}
+
+.input-group label {
+    color: #55594f;
+    font-size: 12px;
+}
+
+.home-panel form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 13px;
+}
+
+.home-panel .input-group {
+    min-width: 0;
+    margin-bottom: 19px;
+}
+
+.home-panel .input-group label {
+    min-height: 39px;
+    color: #55594f;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.input-group input,
+.guess-input {
+    min-width: 0;
+    padding: 13px 12px;
+    border: 1px solid rgba(23, 27, 24, 0.2);
+    border-radius: 3px;
+    background: var(--paper-light);
+    color: var(--ink);
+    font-family: "Manrope", "Trebuchet MS", sans-serif;
+}
+
+.input-group input:focus,
+.guess-input:focus {
+    border-color: #795c36;
+    outline: 2px solid rgba(121, 92, 54, 0.18);
+    outline-offset: 1px;
+}
+
+.button {
+    min-height: 50px;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 7px;
+    padding: 13px 17px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background: var(--rust);
+    color: var(--paper-light);
+    font-family: "Manrope", "Trebuchet MS", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+    transition: background 160ms ease, border-color 160ms ease;
+}
+
+.button:hover {
+    background: #6f392f;
+}
+
+.button:active {
+    transform: none;
+}
+
+.button:focus-visible,
+.vote-button:focus-visible,
+.word-button:focus-visible {
+    outline: 3px solid var(--copper);
+    outline-offset: 3px;
+}
+
+.button.secondary {
+    border-color: rgba(23, 27, 24, 0.2);
+    background: #d9d1c3;
+    color: var(--ink);
+}
+
+.button.secondary:hover {
+    background: #cec4b4;
+}
+
+.subtitle {
+    color: var(--muted);
+    text-align: center;
+}
+
+.card > .subtitle {
+    margin: 4px 0 24px;
+    color: #64665e;
+}
+
+.error {
+    border: 1px solid rgba(135, 72, 59, 0.35);
+    border-radius: 3px;
+    background: rgba(135, 72, 59, 0.1);
+    color: #713a31;
+    text-align: left;
+}
+
+.step {
+    color: #795c36;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.instruction {
+    color: #55594f;
+}
+
+.secret-card h1,
+.elimination-card h1,
+.white-card h1 {
+    text-align: center;
+}
+
+.secret-word {
+    padding: 25px 16px;
+    border: 1px solid rgba(121, 92, 54, 0.42);
+    border-radius: 3px;
+    background: #ded6c8;
+    color: #343a31;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 38px;
+    font-weight: 600;
+}
+
+.vote-icon,
+.big-icon {
+    filter: grayscale(1);
+    font-size: 35px;
+}
+
+.vote-list {
+    gap: 9px;
+    margin-top: 25px;
+}
+
+.vote-row {
+    gap: 8px;
+}
+
+.vote-button {
+    min-height: 54px;
+    padding: 12px 15px;
+    border: 1px solid rgba(135, 72, 59, 0.2);
+    border-radius: 3px;
+    background: #f3eee5;
+    color: var(--ink);
+    font-family: "Manrope", "Trebuchet MS", sans-serif;
+    font-size: 13px;
+    transition: background 150ms ease, border-color 150ms ease;
+}
+
+.vote-button:hover {
+    border-color: rgba(135, 72, 59, 0.45);
+    background: #e9ded1;
+}
+
+.vote-button > span:last-child {
+    color: #87483b;
+    font-size: 11px;
+}
+
+.vote-order {
+    flex-basis: 28px;
+    border: 1px solid rgba(23, 27, 24, 0.16);
+    border-radius: 3px;
+    background: transparent;
+    color: #64665e;
+}
+
+.word-button {
+    flex-basis: 54px;
+    border: 1px solid rgba(23, 27, 24, 0.18);
+    border-radius: 3px;
+    background: #ddd5c7;
+    color: var(--ink);
+}
+
+.word-button:hover {
+    background: #cec4b4;
+}
+
+.eliminated {
+    color: #55594f;
+}
+
+.role-box,
+.recap {
+    border: 1px solid rgba(23, 27, 24, 0.12);
+    border-radius: 3px;
+    background: #ded6c8;
+}
+
+.role-box span,
+.recap,
+.recap-joueurs li span {
+    color: #55594f;
+}
+
+.role-box strong {
+    color: #795c36;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 28px;
+}
+
+.victory {
+    color: #425a47;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    text-align: center !important;
+}
+
+.recap strong,
+.recap-title {
+    color: var(--ink);
+}
+
+.recap-joueurs li {
+    border: 1px solid rgba(23, 27, 24, 0.09);
+    border-radius: 3px;
+    background: var(--paper-light);
+}
+
+.players-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+}
+
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(9px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        align-items: flex-start;
+        padding: 28px 18px;
+    }
+
+    .home-shell {
+        max-width: 540px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .home-intro {
+        min-height: auto;
+        padding: 8px 5px 0;
+    }
+
+    .logo {
+        margin: 17px 0 16px;
+        font-size: 64px;
+        line-height: 0.78;
+    }
+
+    .home-mark {
+        margin: 4px 0 12px;
+    }
+
+    .home-note {
+        font-size: 21px;
+    }
+
+    .edition-line {
+        margin-top: 22px;
+    }
+
+    .home-panel {
+        padding: 27px 23px 24px;
+    }
+
+    .card {
+        padding: 27px 22px;
+    }
+
+    .home-panel .input-group label {
+        min-height: 42px;
+    }
+}
+
+@media (max-width: 420px) {
+    .home-panel form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-panel .input-group label {
+        min-height: 0;
+    }
+
+    .players-form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .recap-joueurs li {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .recap-joueurs li span:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
