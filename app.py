@@ -311,6 +311,14 @@ BANQUE_MOTS = [
     ("F1", "Gran Turismo"), ("GTA V", "GTA VI"),
     ("Mario", "Sonic"), ("Pikachu", "Évoli"),
     ("Clash Royale", "Clash of Clans"), ("Skin", "Emote"),
+    
+    # Marques
+    ("Nike", "Adidas"), ("Shein", "Temu"),
+    ("Apple", "iPhone"), ("Louis Vuitton", "Gucci"),
+    ("Sephora", "Nocibé"), ("BMW", "Mercedes"),
+    ("Dacia", "Škoda"), ("Visa", "Mastercard"),
+    ("Lidl", "Aldi"), ("Lacoste", "Ralph Lauren"),
+    ("Deezer", "10 heures"), ("Google", "Chrome"),
 ]
 
 # ---------------------------------------------------------
