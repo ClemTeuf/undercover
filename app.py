@@ -279,7 +279,38 @@ BANQUE_MOTS = [
     ("Job étudiant", "Intérim"), ("Loyer", "Facture"),
     ("Radin", "Flambeur"), ("Salaire", "Argent de poche"),
     ("Black Friday", "Soldes"), ("Code promo", "Réduction"),
-
+    
+    # Anime
+    ("Genki Dama", "Haki des Rois"), ("Zoro", "Sanji"),
+    ("Grand Terrassement", "Séisme"), ("Eren", "Mikasa"),
+    ("Titan Colossal", "Titan Charrette"), ("Shanks", "Mihawk"),
+    ("Rasengan", "Chidori"), ("Extension du Territoire", "Grand Remplacement"),
+    ("One for All", "All for One"), ("Death Note", "Geass"),
+    ("Tanjiro", "Nezuko"), ("Mach 20", "Supervitesse"),
+    
+    # Films
+    ("Titanic", "Pearl Harbor"), ("Jurassic Park", "King Kong"),
+    ("Harry Potter", "Le Seigneur des Anneaux"), ("Ça", "Chucky"),
+    ("Narnia", "Poudlard"), ("Shrek", "Monstre & Cie"),
+    ("Taxi", "Le Transporteur"), ("La Reine des Neiges", "Raiponce"),
+    ("Jack Sparrow", "Indiana Jones"), ("Astérix", "Obélix"),
+    ("Fast and Furious", "Need For Speed"), ("Dobby", "Gollum"),
+    
+    # Séries
+    ("Breaking Bad", "Prison Break"), ("The Walking Dead", "The Last of Us"),
+    ("Sex Education", "365 jours"), ("Walter White", "Gus Fring"),
+    ("Mercredi", "La Famille Addams"), ("The 100", "Le Labyrinthe"),
+    ("Friends", "How I Met Your Mother"), ("Malcolm", "Ma Famille d'abord"),
+    ("Ted", "Ted 2"), ("Plus Belle la vie", "Demain nous appartient"),
+    ("Ahsoka", "Obi-Wan Kenobi"), ("Cobra Kai", "Karate Kid"),
+    
+    # Jeux vidéo
+    ("FIFA", "EA FC"), ("Valorant", "Counter-Strike"),
+    ("Fortnite", "Roblox"), ("AWP", "SSG 08"),
+    ("Diamant", "Netherite"), ("Subnautica", "Raft"),
+    ("F1", "Gran Turismo"), ("GTA V", "GTA VI"),
+    ("Mario", "Sonic"), ("Pikachu", "Évoli"),
+    ("Clash Royale", "Clash of Clans"), ("Skin", "Emote"),
 ]
 
 # ---------------------------------------------------------
@@ -288,6 +319,9 @@ BANQUE_MOTS = [
 
 def generer_joueurs(noms, nb_civ, nb_und, nb_whi):
     mot_civil, mot_undercover = random.choice(BANQUE_MOTS)
+
+    if random.choice((True, False)):
+        mot_civil, mot_undercover = mot_undercover, mot_civil
 
     roles = (
         ["Civil"] * nb_civ
