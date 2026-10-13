@@ -224,6 +224,9 @@ BANQUE_MOTS = [
     ("Noob", "Débutant"), ("Skin", "Cosmétique"),
     ("Loot", "Récompense"), ("Ranked", "Classé"),
     ("Manette", "Clavier"), ("Speedrun", "Let's Play"),
+    ("Streamer", "YouTuber"), ("Discord", "TeamSpeak"),
+    ("Steam", "Epic Games"), ("Overwatch", "Apex Legends"),
+    ("Easter Egg", "Cheat Code"), ("Ping", "FPS"),
 
     # Études & vie étudiante
     ("Partiel", "Contrôle"), ("Amphi", "Salle de classe"),
@@ -558,8 +561,29 @@ def jeu():
     ordre_vote = session.get("ordre_vote")
 
     if ordre_vote is None or set(ordre_vote) != set(indices_vivants):
-        random.shuffle(indices_vivants)
-        ordre_vote = indices_vivants
+        non_white = [
+            index for index in indices_vivants
+            if joueurs[index]["role"] != "Mr. White"
+        ]
+        white = [
+            index for index in indices_vivants
+            if joueurs[index]["role"] == "Mr. White"
+        ]
+
+        random.shuffle(non_white)
+        random.shuffle(white)
+        ordre_vote = non_white + white
+        session["ordre_vote"] = ordre_vote
+    elif joueurs[ordre_vote[0]]["role"] == "Mr. White":
+        non_white = [
+            index for index in ordre_vote
+            if joueurs[index]["role"] != "Mr. White"
+        ]
+        white = [
+            index for index in ordre_vote
+            if joueurs[index]["role"] == "Mr. White"
+        ]
+        ordre_vote = non_white + white
         session["ordre_vote"] = ordre_vote
 
     vivants = [(index, joueurs[index]) for index in ordre_vote]
