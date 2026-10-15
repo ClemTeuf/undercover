@@ -157,6 +157,8 @@ BANQUE_MOTS = [
     ("Cloud", "Serveur"), ("Laser", "Fibre optique"),
     ("Satellite", "Antenne"), ("Moteur de recherche", "Navigateur"),
     ("Intelligence Artificielle", "Robot"),
+    ("Chatbot", "Assistant virtuel"), ("Deepfake", "Montage vidéo"),
+    ("Données personnelles", "Cookies"), ("Voiture autonome", "Voiture électrique"),
 
     # Corps humain
     ("Œil", "Oreille"), ("Nez", "Bouche"), ("Bras", "Jambe"),
@@ -322,6 +324,21 @@ BANQUE_MOTS = [
     ("Dacia", "Škoda"), ("Visa", "Mastercard"),
     ("Lidl", "Aldi"), ("Lacoste", "Ralph Lauren"),
     ("Deezer", "10 heures"), ("Google", "Chrome"),
+    
+    # Reste
+    ("Télétravail", "Coworking"), ("Livraison à domicile", "Click & collect"),
+    ("Seconde main", "Location"), ("Paiement sans contact", "Virement instantané"),
+    ("Canicule", "Sécheresse"), ("Panneau solaire", "Éolienne"),
+    ("Pompe à chaleur", "Chaudière"), ("Inflation", "Récession"),
+    ("Vegan", "Végétarien"), ("Streaming", "Téléchargement"),
+    ("Cryptomonnaie", "Bitcoin"), ("Cyberattaque", "Piratage"),
+    ("Influenceur", "Journaliste"), ("Télétravail", "Présentiel"),
+    ("Démission", "Licenciement"), ("Élection", "Référendum"),
+    ("Climat", "Météo"), ("Incendie", "Inondation"),
+    ("Grippe", "Covid"), ("Retraite", "Pension"),
+    ("Arnaque", "Escroquerie"), ("Auchan", "Aux champs"),
+    ("Renault", "Renaud"), ("Temu", "T'es mou"),
+    ("Spotify", "Sportif"), ("Twitch", "Twix"),
 ]
 
 # ---------------------------------------------------------
