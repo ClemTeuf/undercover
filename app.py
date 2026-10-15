@@ -486,6 +486,10 @@ def lancer():
     )
 
     session["joueurs"] = joueurs
+    session["classement"] = [
+        {"nom": nom, "points": 0} for nom in noms
+    ]
+    session["manche_comptabilisee"] = False
     session["mot_civil"] = mot_civil
     session["mot_undercover"] = mot_undercover
     session["index_decouverte"] = 0
@@ -689,6 +693,36 @@ def fin():
 
     white_gagne = session.get("white_gagne", False)
 
+    if not session.get("manche_comptabilisee", False):
+        classement = session.get("classement", [])
+        joueurs = session.get("joueurs", [])
+
+        for index, joueur in enumerate(joueurs):
+            if index >= len(classement):
+                break
+
+            if white_gagne and joueur["role"] == "Mr. White":
+                classement[index]["points"] += 6
+            elif (
+                not white_gagne
+                and victoire == "civils"
+                and joueur["role"] == "Civil"
+            ):
+                classement[index]["points"] += 2
+            elif not white_gagne and victoire == "imposteurs":
+                points_role = {"Undercover": 10, "Mr. White": 6}
+                classement[index]["points"] += points_role.get(
+                    joueur["role"], 0
+                )
+
+        session["classement"] = classement
+        session["manche_comptabilisee"] = True
+
+    classement = sorted(
+        enumerate(session.get("classement", [])),
+        key=lambda entree: (-entree[1]["points"], entree[0])
+    )
+
     if white_gagne:
         message = "MR. WHITE A DEVINÉ LE MOT ET GAGNE !"
     elif victoire == "civils":
@@ -703,7 +737,8 @@ def fin():
         message=message,
         mot_civil=session.get("mot_civil", ""),
         mot_undercover=session.get("mot_undercover", ""),
-        joueurs=session.get("joueurs", [])
+        joueurs=session.get("joueurs", []),
+        classement=[joueur for _, joueur in classement]
     )
 
 # ---------------------------------------------------------
@@ -728,6 +763,7 @@ def rejouer():
     )
 
     session["joueurs"] = joueurs
+    session["manche_comptabilisee"] = False
     session["mot_civil"] = mot_civil
     session["mot_undercover"] = mot_undercover
     session["index_decouverte"] = 0

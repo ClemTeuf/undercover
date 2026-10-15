@@ -39,6 +39,23 @@
             </li>
             {% endfor %}
           </ul>
+
+          <h2 class="recap-title">Classement de la session</h2>
+          <p>
+            Victoire des civils : 2 points. Undercover : 10 points. Mr. White :
+            6 points.
+          </p>
+          <ol class="recap-joueurs classement-joueurs">
+            {% for joueur in classement %}
+            <li>
+              <strong>{{ joueur.nom }}</strong>
+              <span
+                >{{ joueur.points }} point{% if joueur.points != 1 %}s{% endif
+                %}</span
+              >
+            </li>
+            {% endfor %}
+          </ol>
         </div>
 
         <a href="{{ url_for('rejouer') }}" class="button">
